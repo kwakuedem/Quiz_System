@@ -1,0 +1,18 @@
+{% extends './base.html' %}
+
+{% block content %}
+  <h2>Quizzes</h2>
+  <p><b>Note!</b> Imediately you clicked on the <i>Intended Quiz Button</i> to start your Quiz</p>
+  
+
+    <ul>
+      {% for quiz in quizzes %}
+      <div class="btn-div">
+        <button style="padding:20px 40px;"><a href="{% url 'start_quiz' quiz.id %}">{{ quiz.title }}</a></button>
+      </div>
+        {% endfor %}
+    </ul>
+
+  
+
+{% endblock %}

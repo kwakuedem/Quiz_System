@@ -1,0 +1,43 @@
+{% load static %}
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Quiz App{% endblock %}</title>
+    <!-- Add your CSS links or stylesheets here -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<style>
+   
+</style>
+
+<body>
+    <header>
+        <h1>Quiz App</h1>
+        {% if user.is_authenticated %}
+        <div id="details">
+            <p id="username">Welcome, {{ user.username }} </p>
+            <button  id="logout-btn"><a href="{% url 'logout' %}">Logout</a> <button>
+        </div>
+           
+        {% else %}
+            {% comment %} <p><a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a></p> {% endcomment %}
+        {% endif %}
+    </header>
+
+    <main>
+        {% block content %}
+            <!-- Content goes here -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Your footer content here -->
+        {% comment %} <p>Copyright &copy; 2024</p>
+        <p>Developed with <span id="heart">&hearts;</span> by Rapheal</p> {% endcomment %}
+    </footer>
+</body>
+</html>
